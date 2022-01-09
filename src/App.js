@@ -9,20 +9,24 @@ class App extends Component {
     this.ref = firebase.firestore().collection('wineCellar');
     this.unsubscribe = null;
     this.state = {
-      boards: []
+      wineCellar: []
     };
   }
 
   onCollectionUpdate = (querySnapshot) => {
     const wineCellar = [];
     querySnapshot.forEach((doc) => {
-      const { title, description, author } = doc.data();
+      const { name, color, type, year, listPrice, isOpen, isEmpty } = doc.data();
       wineCellar.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        title,
-        description,
-        author,
+        name,
+        color,
+        type,
+        year,
+        listPrice,
+        open: isOpen,
+        empty: isEmpty
       });
     });
     this.setState({

@@ -50,8 +50,18 @@ class Show extends Component {
             <dl>
               <dt>Name:</dt>
               <dd>{this.state.wine.name}</dd>
-              <dt>Author:</dt>
-              <dd>{this.state.wine.author}</dd>
+              <dt>Color:</dt>
+              <dd>{this.state.wine.color}</dd>
+              <dt>Type:</dt>
+              <dd>{this.state.wine.type}</dd>
+              <dt>Year:</dt>
+              <dd>{this.state.wine.year}</dd>
+              <dt>List Price:</dt>
+              <dd>{this.state.wine.listPrice}</dd>
+              <dt>Open?</dt>
+              <dd>{this.state.wine.open ? 'Yes' : 'No'}</dd>
+              <dt>Empty?</dt>
+              <dd>{this.state.wine.empty ? 'Yes' : 'No'}</dd>
             </dl>
             <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
