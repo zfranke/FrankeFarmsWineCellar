@@ -10,8 +10,12 @@ class Create extends Component {
     this.ref = firebase.firestore().collection('wineCellar');
     this.state = {
       name: '',
-      : '',
-      author: ''
+      color: '',
+      type: '',
+      year: '',
+      listPrice: '',
+      isOpen: '',
+      isEmpty: ''
     };
   }
   onChange = (e) => {
@@ -23,17 +27,26 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, description, author } = this.state;
+    const { name, color, type, year, listPrice, isOpen, isEmpty } = this.state;
 
     this.ref.add({
-      title,
-      description,
-      author
+        name,
+        color,
+        type,
+        year,
+        listPrice,
+        open: isOpen,
+        empty: isEmpty
+        
     }).then((docRef) => {
       this.setState({
-        title: '',
-        description: '',
-        author: ''
+        name: '',
+        color: '',
+        type: '',
+        year: '',
+        listPrice: '',
+        isOpen: '',
+        isEmpty: ''
       });
       this.props.history.push("/")
     })
@@ -43,30 +56,46 @@ class Create extends Component {
   }
 
   render() {
-    const { title, description, author } = this.state;
+   const { name, color, type, year, listPrice, isOpen, isEmpty } = this.state;
     return (
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title">
-              ADD BOARD
+              ADD WINE
             </h3>
           </div>
           <div class="panel-body">
-            <h4><Link to="/" class="btn btn-primary">Book List</Link></h4>
+            <h4><Link to="/" class="btn btn-primary">Wine List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" class="form-control" name="title" value={title} onChange={this.onChange} placeholder="Title" />
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" value={name} onChange={this.onChange} placeholder="Name" />
               </div>
               <div class="form-group">
-                <label for="description">Description:</label>
-                <textArea class="form-control" name="description" onChange={this.onChange} placeholder="Description" cols="80" rows="3">{description}</textArea>
+                <label for="color">Color:</label>
+                <textArea class="form-control" name="color" onChange={this.onChange} placeholder="Color" cols="80" rows="3">{color}</textArea>
               </div>
               <div class="form-group">
-                <label for="author">Author:</label>
-                <input type="text" class="form-control" name="author" value={author} onChange={this.onChange} placeholder="Author" />
+                <label for="author">Type:</label>
+                <input type="text" class="form-control" name="author" value={type} onChange={this.onChange} placeholder="Type" />
               </div>
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="text" class="form-control" name="year" value={year} onChange={this.onChange} placeholder="Year" />
+                </div>
+                <div class="form-group">
+                    <label for="listPrice">List Price:</label>
+                    <input type="text" class="form-control" name="listPrice" value={listPrice} onChange={this.onChange} placeholder="List Price" />
+                </div>
+                <div class="form-group">
+                    <label for="isOpen">Open:</label>
+                    <input type="checkbox" class="form-control" name="isOpen" value={isOpen} onChange={this.onChange} placeholder="Open" />
+                </div>
+                <div class="form-group">
+                    <label for="isEmpty">Empty:</label>
+                    <input type="checkbox" class="form-control" name="isEmpty" value={isEmpty} onChange={this.onChange} placeholder="Empty" />
+                </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
           </div>
