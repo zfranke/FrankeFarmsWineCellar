@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './App.css';
-import firebase from './Firebase';
+import { db } from './Firebase';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.ref = firebase.firestore().collection('wineCellar');
+    this.ref = db.collection('wineCellar');
     this.unsubscribe = null;
     this.state = {
       wineCellar: []
@@ -40,16 +40,16 @@ class App extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               Franke Farms: WINE LIST
             </h3>
           </div>
-          <div class="panel-body">
+          <div className="panel-body">
             <h4><Link to="/create">Add Wine</Link></h4>
-            <table class="table table-stripe">
+            <table className="table table-stripe">
               <thead>
                 <tr>
                   <th>Name</th>
@@ -83,3 +83,4 @@ class App extends Component {
 }
 
 export default App;
+

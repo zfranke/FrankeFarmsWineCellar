@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import firebase from '../Firebase';
+import { db } from '../Firebase';
 import { Link } from 'react-router-dom';
 
 class Create extends Component {
 
   constructor() {
     super();
-    this.ref = firebase.firestore().collection('wineCellar');
+    this.ref = db.collection('wineCellar');
     this.state = {
       name: '',
       color: '',
@@ -35,8 +35,8 @@ class Create extends Component {
         type,
         year,
         listPrice,
-        open: isOpen,
-        empty: isEmpty
+        isOpen,
+        isEmpty
         
     }).then((docRef) => {
       this.setState({
@@ -74,11 +74,21 @@ class Create extends Component {
               </div>
               <div class="form-group">
                 <label for="color">Color:</label>
-                <textArea class="form-control" name="color" onChange={this.onChange} placeholder="Color" cols="80" rows="3">{color}</textArea>
+                <select class="form-control" name="color" value={color} onChange={this.onChange}>
+                        <option value="red">Red</option>
+                        <option value="white">White</option>
+                        <option value="rose">Rose</option>
+                        <option value="sparkling">Sparkling</option>
+                        <option value="tawny">Tawny</option>
+                        <option value="yellow">Orange</option>
+                        <option value="yellow">Gray</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="other">Other</option>
+                    </select>
               </div>
               <div class="form-group">
                 <label for="author">Type:</label>
-                <input type="text" class="form-control" name="author" value={type} onChange={this.onChange} placeholder="Type" />
+                <input type="text" class="form-control" name="type" value={type} onChange={this.onChange} placeholder="Type" />
               </div>
                 <div class="form-group">
                     <label for="year">Year:</label>
@@ -90,11 +100,17 @@ class Create extends Component {
                 </div>
                 <div class="form-group">
                     <label for="isOpen">Open:</label>
-                    <input type="checkbox" class="form-control" name="isOpen" value={isOpen} onChange={this.onChange} placeholder="Open" />
+                    <select class="form-control" name="isOpen" value={isOpen} onChange={this.onChange}>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="isEmpty">Empty:</label>
-                    <input type="checkbox" class="form-control" name="isEmpty" value={isEmpty} onChange={this.onChange} placeholder="Empty" />
+                    <select class="form-control" name="isEmpty" value={isEmpty} onChange={this.onChange}>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
                 </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

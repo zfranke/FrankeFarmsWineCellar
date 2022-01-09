@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../Firebase';
+import { db } from '../Firebase';
 import { Link } from 'react-router-dom';
 
 class Show extends Component {
@@ -13,7 +13,7 @@ class Show extends Component {
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('wineCellar').doc(this.props.match.params.id);
+    const ref = db.collection('wineCellar').doc(this.props.match.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         this.setState({
@@ -28,7 +28,7 @@ class Show extends Component {
   }
 
   delete(id){
-    firebase.firestore().collection('wineCellar').doc(id).delete().then(() => {
+    db.collection('wineCellar').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
       this.props.history.push("/")
     }).catch((error) => {
@@ -43,7 +43,7 @@ class Show extends Component {
           <div class="panel-heading">
           <h4><Link to="/">Wine List</Link></h4>
             <h3 class="panel-title">
-              {this.state.board.title}
+              {this.state.wine.name}
             </h3>
           </div>
           <div class="panel-body">
@@ -59,9 +59,9 @@ class Show extends Component {
               <dt>List Price:</dt>
               <dd>{this.state.wine.listPrice}</dd>
               <dt>Open?</dt>
-              <dd>{this.state.wine.open ? 'Yes' : 'No'}</dd>
+              <dd>{this.state.wine.isOpen}</dd>
               <dt>Empty?</dt>
-              <dd>{this.state.wine.empty ? 'Yes' : 'No'}</dd>
+              <dd>{this.state.wine.isEmpty}</dd>
             </dl>
             <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
             <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>

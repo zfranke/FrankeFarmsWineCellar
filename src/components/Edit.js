@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import firebase from '../Firebase';
+import { db } from '../Firebase';
 import { Link } from 'react-router-dom';
+
 
 class Edit extends Component {
 
@@ -19,7 +20,7 @@ class Edit extends Component {
   }
 
   componentDidMount() {
-    const ref = firebase.firestore().collection('wineCellar').doc(this.props.match.params.id);
+    const ref = db.collection('wineCellar').doc(this.props.match.params.id);
     ref.get().then((doc) => {
       if (doc.exists) {
         const wine = doc.data();
@@ -50,7 +51,7 @@ class Edit extends Component {
 
     const { name, color, type, year, listPrice, isOpen, isEmpty } = this.state;
 
-    const updateRef = firebase.firestore().collection('boards').doc(this.state.key);
+    const updateRef = db.collection('boards').doc(this.state.key);
     updateRef.set({
         name,
         color,
@@ -110,14 +111,19 @@ class Edit extends Component {
                 <input type="text" class="form-control" name="listPrice" value={this.state.listPrice} onChange={this.onChange} />
               </div>
               <div class="form-group">
-                <label>Open</label>
-                <input type="text" class="form-control" name="isOpen" value={this.state.isOpen} onChange={this.onChange} />
-              </div>
-              <div class="form-group">
-                <label>Empty</label>
-                <input type="text" class="form-control" name="isEmpty" value={this.state.isEmpty} onChange={this.onChange} />
-              </div>
-              <button type="submit" class="btn btn-success">Submit</button>
+                    <label for="isOpen">Open:</label>
+                    <select class="form-control" name="isOpen" value={this.state.isOpen} onChange={this.onChange}>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="isEmpty">Empty:</label>
+                    <select class="form-control" name="isEmpty" value={this.state.isEmpty} onChange={this.onChange}>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
             </form>
           </div>
         </div>

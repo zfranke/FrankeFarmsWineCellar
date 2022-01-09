@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
@@ -11,14 +15,17 @@ import Show from './components/Show';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <Router>
-      <div>
-        <Route exact path='/' component={App} />
-        <Route path='/edit/:id' component={Edit} />
-        <Route path='/create' component={Create} />
-        <Route path='/show/:id' component={Show} />
-      </div>
-  </Router>,
+  
+ //Create router object to assign routes to components,
+  //and render the components to the DOM
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/create" element={<Create />} />
+      <Route path="/edit/:id" element={<Edit />} />
+      <Route path="/show/:id" element={<Show />} />
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
