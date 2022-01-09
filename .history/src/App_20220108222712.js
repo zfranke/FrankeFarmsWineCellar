@@ -15,7 +15,7 @@ function App() {
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/wines"} className="nav-link">
+            <Link to={"/WineList"} className="nav-link">
               Wine
             </Link>
           </li>
@@ -31,7 +31,6 @@ function App() {
         <h2>Franke Farms: Wine Cellar</h2>
         <Routes>
           <Route path="/" element={<WineList />} />
-          <Route path="/wines" element={<WineList />} />
           <Route path="add" element={<AddWine />} />
         </Routes>
       </div>

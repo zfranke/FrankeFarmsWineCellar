@@ -28,12 +28,13 @@ function App() {
       </nav>
 
       <div className="container mt-3">
-        <h2>Franke Farms: Wine Cellar</h2>
+        <h2>React Hooks Firestore example</h2>
+        <BrowserRouter>
         <Routes>
-          <Route path="/" element={<WineList />} />
-          <Route path="/wines" element={<WineList />} />
-          <Route path="add" element={<AddWine />} />
+          <Route exact path={["/", "/wines"]} component={WineList} />
+          <Route exact path="/add" component={AddWine} />
         </Routes>
+        </BrowserRouter>
       </div>
     </div>
   );

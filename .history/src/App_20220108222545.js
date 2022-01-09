@@ -31,7 +31,6 @@ function App() {
         <h2>Franke Farms: Wine Cellar</h2>
         <Routes>
           <Route path="/" element={<WineList />} />
-          <Route path="/wines" element={<WineList />} />
           <Route path="add" element={<AddWine />} />
         </Routes>
       </div>
