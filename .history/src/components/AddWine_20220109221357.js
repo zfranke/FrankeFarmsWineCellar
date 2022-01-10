@@ -6,7 +6,6 @@ const AddWine = () => {
     name: '',
     color: '',
     type: '',
-    origin: '',
     year: '',
     listPrice: '',
     isOpen: false,
@@ -28,14 +27,10 @@ const AddWine = () => {
       name: wine.name,
       color: wine.color,
         type: wine.type,
-        origin: wine.origin,
         year: wine.year,
         listPrice: wine.listPrice,
         isOpen: false,
-        isEmpty: false,
-        rackLocation: "",
-        rowPosition: "",
-        colPosition: ""
+        isEmpty: false
     };
 
     WineDataService.create(data)
