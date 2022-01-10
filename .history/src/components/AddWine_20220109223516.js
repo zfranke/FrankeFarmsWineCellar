@@ -10,6 +10,7 @@ const AddWine = () => {
     year: '',
     listPrice: '',
     isOpen: false,
+    isEmpty: false,
     rackLocation: "",
     rowPosition: "",
     colPosition: ""
@@ -31,6 +32,7 @@ const AddWine = () => {
         year: wine.year,
         listPrice: wine.listPrice,
         isOpen: false,
+        isEmpty: false,
         rackLocation: "",
         rowPosition: "",
         colPosition: ""

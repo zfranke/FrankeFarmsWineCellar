@@ -15,14 +15,13 @@ const WinesList = () => {
   };
 
   const setActiveWine = (Wine, index) => {
-    const { name, color, type, origin, year, listPrice, isOpen, rackLocation, rowPosition, colPosition } = Wine.data();
+    const { name, color, type, year, listPrice, isOpen, rackLocation, rowPosition, colPosition } = Wine.data();
 
     setCurrentWine({
       id: Wine.id,
       name,
         color,
         type,
-        origin,
         year,
         listPrice,
         isOpen,

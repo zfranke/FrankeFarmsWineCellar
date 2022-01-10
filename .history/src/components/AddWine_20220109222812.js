@@ -10,6 +10,7 @@ const AddWine = () => {
     year: '',
     listPrice: '',
     isOpen: false,
+    isEmpty: false,
     rackLocation: "",
     rowPosition: "",
     colPosition: ""
@@ -31,6 +32,7 @@ const AddWine = () => {
         year: wine.year,
         listPrice: wine.listPrice,
         isOpen: false,
+        isEmpty: false,
         rackLocation: "",
         rowPosition: "",
         colPosition: ""
@@ -76,17 +78,15 @@ const AddWine = () => {
 
             <div className="form-group">
                 <label htmlFor="color">Color</label>
-                <select class="form-control" name="color" value={wine.color} onChange={handleInputChange}>
-                        <option value="red">Red</option>
-                        <option value="white">White</option>
-                        <option value="rose">Rose</option>
-                        <option value="sparkling">Sparkling</option>
-                        <option value="tawny">Tawny</option>
-                        <option value="yellow">Orange</option>
-                        <option value="yellow">Gray</option>
-                        <option value="yellow">Yellow</option>
-                        <option value="other">Other</option>
-                    </select>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="color"
+                    required
+                    value={wine.color}
+                    onChange={handleInputChange}
+                    name="color"
+                />
             </div>
 
             <div className="form-group">

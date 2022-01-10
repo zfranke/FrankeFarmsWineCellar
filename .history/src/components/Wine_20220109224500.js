@@ -7,10 +7,11 @@ const Wine = (props) => {
     name: "",
     color: "",
     type: "",
-    origin: "",
+    
     year: "",
     listPrice: "",
     isOpen: false,
+    origin: "",
     rackLocation: "",
     rowPosition: "",
     colPosition: ""
